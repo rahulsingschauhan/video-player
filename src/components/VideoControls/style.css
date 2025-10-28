@@ -1,0 +1,43 @@
+.video-controls-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.video-player-container:hover .video-controls-container {
+    opacity: 1;
+}
+
+.progress-bar-container {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+}
+
+.controls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-controls, .right-controls {
+    display: flex;
+    align-items: center;
+}
+
+.left-controls > *, .right-controls > * {
+    margin-right: 15px;
+}
+
+.volume-slider {
+    width: 80px;
+}
