@@ -39,8 +39,10 @@ const ListComponent = () => {
               key={video.id}
               onClick={() => handleVideoClick(video)}
               className={`video-item ${selectedVideo && selectedVideo.id === video.id ? 'selected' : ''}`}>
+               <img src={video.thumbnailUrl} alt={video.title} className="video-thumbnail" />
               <div className="video-info">
                 <span className="video-title">{video.title}</span>
+                <p className="video-description">{video.description}</p>
                 <span className="video-duration">{video.duration}</span>
               </div>
             </li>
