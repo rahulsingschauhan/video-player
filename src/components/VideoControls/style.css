@@ -110,26 +110,30 @@
   position: relative;
 }
 
-.playback-rate-control svg {
-  font-size: 20px;
-}
-
-.playback-rate-control select {
+.playback-rate-menu {
   position: absolute;
-  top: -30px;
-  right: 0;
+  bottom: 50px; 
+  right: -10px;
   background: rgba(0, 0, 0, 0.8);
-  border: 1px solid var(--border-color);
   border-radius: 4px;
-  color: #fff;
-  padding: 5px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s, top 0.3s;
+  display: flex;
+  flex-direction: column;
 }
 
-.playback-rate-control:hover select {
-  opacity: 1;
-  pointer-events: auto;
-  top: -40px;
+.playback-rate-menu button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.playback-rate-menu button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.playback-rate-menu button.active {
+  background: var(--accent-primary);
+  color: #000;
 }

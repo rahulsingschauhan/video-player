@@ -14,7 +14,11 @@ const formatTime = (seconds) => {
 };
 
 const VideoControls = (props) => {
-    const { isPlaying, isMuted, volume, progress, duration, currentTime, isFullScreen, playbackRate, volumeSliderVisible, onPlayPause, onVolumeChange, onMute, onSeek, onToggleFullScreen, onChangePlaybackRate, onToggleVolumeSlider } = props;
+    const {
+        isPlaying, isMuted, volume, progress, duration, currentTime, isFullScreen, playbackRate,
+        volumeSliderVisible, playbackRateMenuVisible, onPlayPause, onVolumeChange, onMute, onSeek,
+        onToggleFullScreen, onChangePlaybackRate, onToggleVolumeSlider, onTogglePlaybackRateMenu
+    } = props;
 
     return (
         <div className="video-controls-container">
@@ -52,13 +56,22 @@ const VideoControls = (props) => {
                 </div>
                 <div className="right-controls">
                     <div className="playback-rate-control">
-                        <FaCog />
-                        <select onChange={(e) => onChangePlaybackRate(e.target.value)} value={playbackRate}>
-                            <option value="0.5">0.5x</option>
-                            <option value="1">1x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2x</option>
-                        </select>
+                        <button onClick={onTogglePlaybackRateMenu} className="control-button">
+                            <FaCog />
+                        </button>
+                        {playbackRateMenuVisible && (
+                            <div className="playback-rate-menu">
+                                {[0.5, 1, 1.5, 2].map(rate => (
+                                    <button
+                                        key={rate}
+                                        onClick={() => onChangePlaybackRate(rate)}
+                                        className={playbackRate === rate ? 'active' : ''}
+                                    >
+                                        {rate}x
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
                     <button onClick={onToggleFullScreen} className="control-button">
                         <FaExpand />

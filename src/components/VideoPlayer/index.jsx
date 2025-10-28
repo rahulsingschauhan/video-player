@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import VideoControls from '../VideoControls';
@@ -19,6 +18,7 @@ const VideoPlayer = () => {
   const [playbackRate, setPlaybackRate] = useState(1);
   const [controlsVisible, setControlsVisible] = useState(true);
   const [volumeSliderVisible, setVolumeSliderVisible] = useState(false);
+  const [playbackRateMenuVisible, setPlaybackRateMenuVisible] = useState(false);
   const clickTimeout = useRef(null);
 
   let controlsTimeout;
@@ -27,15 +27,18 @@ const VideoPlayer = () => {
     setControlsVisible(true);
     clearTimeout(controlsTimeout);
     controlsTimeout = setTimeout(() => {
-      setControlsVisible(false);
+      if (!playbackRateMenuVisible) {
+        setControlsVisible(false);
+      }
     }, 3000);
   };
 
   const hideControls = () => {
-    clearTimeout(controlsTimeout);
-    setControlsVisible(false);
+    if (!playbackRateMenuVisible) {
+      clearTimeout(controlsTimeout);
+      setControlsVisible(false);
+    }
   };
-
 
   useEffect(() => {
     const video = videoRef.current;
@@ -114,10 +117,15 @@ const VideoPlayer = () => {
     const video = videoRef.current;
     video.playbackRate = rate;
     setPlaybackRate(rate);
+    setPlaybackRateMenuVisible(false);
   };
 
   const toggleVolumeSlider = () => {
     setVolumeSliderVisible(!volumeSliderVisible);
+  };
+
+  const togglePlaybackRateMenu = () => {
+    setPlaybackRateMenuVisible(!playbackRateMenuVisible);
   };
 
   const handleVideoClick = () => {
@@ -158,6 +166,7 @@ const VideoPlayer = () => {
             isFullScreen={isFullScreen}
             playbackRate={playbackRate}
             volumeSliderVisible={volumeSliderVisible}
+            playbackRateMenuVisible={playbackRateMenuVisible}
             onPlayPause={togglePlay}
             onVolumeChange={handleVolumeChange}
             onMute={toggleMute}
@@ -165,6 +174,7 @@ const VideoPlayer = () => {
             onToggleFullScreen={toggleFullScreen}
             onChangePlaybackRate={changePlaybackRate}
             onToggleVolumeSlider={toggleVolumeSlider}
+            onTogglePlaybackRateMenu={togglePlaybackRateMenu}
           />
         </>
       ) : (
