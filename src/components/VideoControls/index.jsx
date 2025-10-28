@@ -16,8 +16,9 @@ const formatTime = (seconds) => {
 const VideoControls = (props) => {
     const {
         isPlaying, isMuted, volume, progress, duration, currentTime, isFullScreen, playbackRate,
-        volumeSliderVisible, playbackRateMenuVisible, onPlayPause, onVolumeChange, onMute, onSeek,
-        onToggleFullScreen, onChangePlaybackRate, onToggleVolumeSlider, onTogglePlaybackRateMenu
+        volumeSliderVisible, playbackRateMenuVisible, onPlayPause, onVolumeChange, onMute,
+        onToggleFullScreen, onChangePlaybackRate, onToggleVolumeSlider, onTogglePlaybackRateMenu,
+        onSeekMouseDown, onSeekChange, onSeekMouseUp
     } = props;
 
     return (
@@ -28,7 +29,9 @@ const VideoControls = (props) => {
                     min="0"
                     max={duration}
                     value={currentTime}
-                    onChange={(e) => onSeek(e.target.value)}
+                    onMouseDown={onSeekMouseDown}
+                    onChange={onSeekChange}
+                    onMouseUp={onSeekMouseUp}
                     className="progress-bar"
                     style={{ background: `linear-gradient(to right, var(--accent-primary) ${progress}%, #555 ${progress}%)` }}
                 />

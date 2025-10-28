@@ -19,6 +19,8 @@ const VideoPlayer = () => {
   const [controlsVisible, setControlsVisible] = useState(true);
   const [volumeSliderVisible, setVolumeSliderVisible] = useState(false);
   const [playbackRateMenuVisible, setPlaybackRateMenuVisible] = useState(false);
+  const [seeking, setSeeking] = useState(false);
+  const [playingBeforeSeek, setPlayingBeforeSeek] = useState(false);
   const clickTimeout = useRef(null);
 
   let controlsTimeout;
@@ -45,8 +47,10 @@ const VideoPlayer = () => {
     if (!video) return;
 
     const updateProgress = () => {
-      setProgress((video.currentTime / video.duration) * 100);
-      setCurrentTime(video.currentTime);
+      if (!seeking) {
+        setProgress((video.currentTime / video.duration) * 100);
+        setCurrentTime(video.currentTime);
+      }
     };
 
     const setVideoDuration = () => setDuration(video.duration);
@@ -70,7 +74,7 @@ const VideoPlayer = () => {
       video.removeEventListener('pause', handlePause);
       video.removeEventListener('volumechange', handleVolumeChange);
     };
-  }, [selectedVideo]);
+  }, [selectedVideo, seeking]);
 
   useEffect(() => {
     const handleFullScreenChange = () => {
@@ -100,9 +104,31 @@ const VideoPlayer = () => {
     video.muted = !video.muted;
   };
 
-  const handleSeek = (seekTime) => {
-    const video = videoRef.current;
-    video.currentTime = seekTime;
+  const handleSeekMouseDown = () => {
+    setPlayingBeforeSeek(isPlaying);
+    if (isPlaying) {
+      videoRef.current.pause();
+    }
+    setSeeking(true);
+  };
+
+  const handleSeekChange = (e) => {
+    const time = parseFloat(e.target.value);
+    setCurrentTime(time);
+    if (videoRef.current) {
+      setProgress((time / videoRef.current.duration) * 100);
+    }
+  };
+
+  const handleSeekMouseUp = (e) => {
+    const time = parseFloat(e.target.value);
+    if (videoRef.current) {
+      videoRef.current.currentTime = time;
+    }
+    setSeeking(false);
+    if (playingBeforeSeek) {
+      videoRef.current.play();
+    }
   };
 
   const toggleFullScreen = () => {
@@ -170,11 +196,13 @@ const VideoPlayer = () => {
             onPlayPause={togglePlay}
             onVolumeChange={handleVolumeChange}
             onMute={toggleMute}
-            onSeek={handleSeek}
             onToggleFullScreen={toggleFullScreen}
             onChangePlaybackRate={changePlaybackRate}
             onToggleVolumeSlider={toggleVolumeSlider}
             onTogglePlaybackRateMenu={togglePlaybackRateMenu}
+            onSeekMouseDown={handleSeekMouseDown}
+            onSeekChange={handleSeekChange}
+            onSeekMouseUp={handleSeekMouseUp}
           />
         </>
       ) : (
