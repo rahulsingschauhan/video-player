@@ -27,6 +27,11 @@ li:hover {
   background-color: #3a3a3a;
 }
 
+li.selected {
+  background-color: #4CAF50;
+  color: white;
+}
+
 li:last-child {
   border-bottom: none;
 }

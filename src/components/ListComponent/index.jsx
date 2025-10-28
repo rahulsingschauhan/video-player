@@ -4,7 +4,7 @@ import { setSelectedVideo } from '../../features/videos/videosSlice';
 import './style.css';
 
 const ListComponent = () => {
-  const videos = useSelector((state) => state.videos.videos);
+  const { videos, selectedVideo } = useSelector((state) => state.videos);
   const dispatch = useDispatch();
 
   const handleVideoClick = (video) => {
@@ -16,7 +16,11 @@ const ListComponent = () => {
       <h2>Video List</h2>
       <ul>
         {videos.map((video) => (
-          <li key={video.id} onClick={() => handleVideoClick(video)}>
+          <li
+            key={video.id}
+            onClick={() => handleVideoClick(video)}
+            className={selectedVideo && selectedVideo.id === video.id ? 'selected' : ''}
+          >
             {video.title}
           </li>
         ))}
