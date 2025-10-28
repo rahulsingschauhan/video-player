@@ -10,12 +10,12 @@
 }
 
 .app {
-  max-width: 1200px;
-  width: 90vw;
-  max-height: 600px;
-  height: 90vh;
+  max-width: 1300px;
+  width: 95vw;
+  max-height: 700px;
+  height: 95vh;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 0 20px;
   animation: slideDown 0.5s ease-out;
 }
 
