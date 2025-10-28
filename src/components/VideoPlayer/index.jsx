@@ -1,3 +1,4 @@
+
 import React, { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import VideoControls from '../VideoControls';
@@ -16,6 +17,25 @@ const VideoPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
+  const [controlsVisible, setControlsVisible] = useState(true);
+  const [volumeSliderVisible, setVolumeSliderVisible] = useState(false);
+  const clickTimeout = useRef(null);
+
+  let controlsTimeout;
+
+  const showControls = () => {
+    setControlsVisible(true);
+    clearTimeout(controlsTimeout);
+    controlsTimeout = setTimeout(() => {
+      setControlsVisible(false);
+    }, 3000);
+  };
+
+  const hideControls = () => {
+    clearTimeout(controlsTimeout);
+    setControlsVisible(false);
+  };
+
 
   useEffect(() => {
     const video = videoRef.current;
@@ -96,11 +116,38 @@ const VideoPlayer = () => {
     setPlaybackRate(rate);
   };
 
+  const toggleVolumeSlider = () => {
+    setVolumeSliderVisible(!volumeSliderVisible);
+  };
+
+  const handleVideoClick = () => {
+    if (clickTimeout.current) {
+      clearTimeout(clickTimeout.current);
+      clickTimeout.current = null;
+      toggleFullScreen();
+    } else {
+      clickTimeout.current = setTimeout(() => {
+        togglePlay();
+        clickTimeout.current = null;
+      }, 200);
+    }
+  };
+
   return (
-    <div ref={containerRef} className="video-player-container">
+    <div
+      ref={containerRef}
+      className={`video-player-container ${!controlsVisible ? 'hide-controls' : ''}`}
+      onMouseMove={showControls}
+      onMouseLeave={hideControls}
+    >
       {selectedVideo ? (
         <>
-          <video ref={videoRef} src={selectedVideo.url} className="video-element" />
+          <video
+            ref={videoRef}
+            src={selectedVideo.url}
+            className="video-element"
+            onClick={handleVideoClick}
+          />
           <VideoControls
             isPlaying={isPlaying}
             isMuted={isMuted}
@@ -110,12 +157,14 @@ const VideoPlayer = () => {
             currentTime={currentTime}
             isFullScreen={isFullScreen}
             playbackRate={playbackRate}
+            volumeSliderVisible={volumeSliderVisible}
             onPlayPause={togglePlay}
             onVolumeChange={handleVolumeChange}
             onMute={toggleMute}
             onSeek={handleSeek}
             onToggleFullScreen={toggleFullScreen}
             onChangePlaybackRate={changePlaybackRate}
+            onToggleVolumeSlider={toggleVolumeSlider}
           />
         </>
       ) : (
