@@ -32,7 +32,7 @@ const VideoPlayer = () => {
       if (!playbackRateMenuVisible) {
         setControlsVisible(false);
       }
-    }, 3000);
+    }, 5000);
   };
 
   const hideControls = () => {
