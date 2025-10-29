@@ -27,7 +27,7 @@ const ListComponent = () => {
   return (
     <div className="list-container">
       <div className="list-header">
-        <h2>Video Playlist</h2>
+        <h2>Playlist</h2>
         <div className="search-container">
           <input
             type="text"
@@ -60,7 +60,6 @@ const ListComponent = () => {
               />
               <div className="video-info">
                 <span className="video-title">{video.title}</span>
-                <p className="video-description">{video.description}</p>
                 <span className="video-duration">{video.duration}</span>
               </div>
             </li>
