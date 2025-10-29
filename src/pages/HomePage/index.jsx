@@ -2,15 +2,14 @@ import './style.css'
 import { useSelector } from 'react-redux';
 import ListComponent from '../../components/ListComponent';
 import VideoPlayer from '../../components/VideoPlayer';
+import Header from '../../components/Header';
 
 function HomePage() {
   const { selectedVideo } = useSelector(state => state.videos);
 
   return (
     <div className="app">
-       <div className="header">
-        <h1>Dev-tube</h1>
-      </div>
+      <Header />
       <div className="container">
         <div className="list-wrapper">
           <ListComponent />
