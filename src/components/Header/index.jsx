@@ -1,14 +1,12 @@
-
 import React from 'react';
 import './style.css';
 import { FaSearch, FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
-
   return (
     <header className="header">
       <div className="header__logo">
-        <h1>Dev-tube</h1>
+        <img src="/logo.svg" alt="DevTube Logo" className="header__logo-img" />
       </div>
       <div className="header__search">
         <input type="text" placeholder="Search" className="header__searchInput" />

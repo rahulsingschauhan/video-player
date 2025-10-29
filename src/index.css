@@ -11,6 +11,10 @@
   --text-primary: rgba(255, 255, 255, 0.87);
   --text-secondary: #aaa;
   --accent-primary: #00a8e8;
+  --accent-secondary: #00e8a8;
+  --glass-background: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --input-background: rgba(0, 0, 0, 0.3);
 
   color: var(--text-primary);
   background-color: var(--background-primary);

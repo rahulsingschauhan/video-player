@@ -2,71 +2,81 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--background-secondary);
-  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem 3rem;
+  background-color: transparent;
+  position: relative;
+  z-index: 10;
 }
 
-.header__logo h1 {
-  color: var(--accent-primary);
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 0;
+.header__logo {
+  flex-shrink: 0;
+}
+
+.header__logo-img {
+  height: 40px;
+  transition: all 0.3s ease;
+}
+
+.header__logo-img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(0, 168, 232, 0.8));
 }
 
 .header__search {
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 40%;
 }
 
 .header__searchInput {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 2rem 0 0 2rem;
-  background-color: var(--background-primary);
-  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
   font-size: 1rem;
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .header__searchInput:focus {
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 8px rgba(0, 168, 232, 0.6);
+  border-color: #00a8e8;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 12px rgba(0, 168, 232, 0.6);
 }
 
 .header__searchButton {
-  padding: 0.75rem 1.5rem;
-  border: 1px solid var(--accent-primary);
+  padding: 0.75rem 1.75rem;
+  border: 1px solid #00a8e8;
   border-left: none;
-  background-color: var(--accent-primary);
+  background-color: #00a8e8;
   color: white;
   border-radius: 0 2rem 2rem 0;
   cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .header__searchButton:hover {
-  background-color: #005f8c;
+  background-color: #0077b3;
+  box-shadow: 0 0 12px rgba(0, 168, 232, 0.6);
 }
 
 .header__searchInput:focus + .header__searchButton {
-  box-shadow: 0 0 8px rgba(0, 168, 232, 0.6);
-  border-color: var(--accent-primary);
+  border-color: #00a8e8;
 }
 
 .header__actionButton {
   background: none;
   border: none;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   padding: 0;
   display: flex;
   align-items: center;
+  transition: color 0.3s ease;
 }
 
 .header__actionButton:hover {
-  color: var(--text-primary);
+  color: #fff;
 }
