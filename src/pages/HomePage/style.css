@@ -80,3 +80,30 @@
 .list-wrapper::-webkit-scrollbar-thumb:hover {
   background: #0077b3;
 }
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .list-wrapper {
+    flex: none;
+    height: 40vh;
+    min-height: 250px;
+  }
+
+  .player-wrapper {
+    flex: none;
+    height: 60vh;
+  }
+
+  .video-details h2 {
+    font-size: 1.1rem;
+  }
+
+  .video-details p {
+    font-size: 0.85rem;
+  }
+}
