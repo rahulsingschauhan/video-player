@@ -1,0 +1,43 @@
+
+[
+  {
+    "id": "1",
+    "title": "Big Buck Bunny",
+    "description": "Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself. When one sunny day three rodents rudely harass him, something snaps... and the rabbit ain't no bunny anymore! In the typical cartoon tradition he prepares the nasty rodents a comical revenge.",
+    "duration": "09:56",
+    "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "thumbnailUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Elephants Dream",
+    "description": "The first Blender Open Movie from 2006",
+    "duration": "10:53",
+    "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    "thumbnailUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg"
+  },
+  {
+    "id": "3",
+    "title": "For Bigger Blazes",
+    "description": "HBO GO now works with Chromecast -- the easiest way to enjoy online video on your TV. For when you want to settle into your Iron Throne to watch the latest episodes. For Bigger Blazes. For Bigger Fun.",
+    "duration": "00:15",
+    "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "thumbnailUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg"
+  },
+  {
+    "id": "4",
+    "title": "For Bigger Escape",
+    "description": "Introducing Chromecast. The easiest way to enjoy online video and music on your TV. For Bigger Escape. For Bigger Fun. For everyone.",
+    "duration": "00:15",
+    "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    "thumbnailUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg"
+  },
+  {
+    "id": "5",
+    "title": "For Bigger Fun",
+    "description": "Introducing Chromecast. The easiest way to enjoy online video and music on your TV. For Bigger Fun. For everyone.",
+    "duration": "01:00",
+    "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    "thumbnailUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg"
+  }
+]
