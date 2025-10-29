@@ -39,5 +39,13 @@
     "duration": "01:00",
     "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     "thumbnailUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg"
+  },
+  {
+    "id": "6",
+    "title": "Introduction the javascript",
+    "description": "this is the introduction of javascript course.",
+    "duration": "15:00",
+    "url": "/videos/01. Introduction.mp4",
+    "thumbnailUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
   }
 ]
