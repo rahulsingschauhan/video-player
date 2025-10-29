@@ -16,6 +16,10 @@ const ListComponent = () => {
     setSearchQuery(event.target.value);
   };
 
+  const clearSearch = () => {
+    setSearchQuery('');
+  };
+
   const filteredVideos = videos.filter((video) =>
     video.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -23,23 +27,37 @@ const ListComponent = () => {
   return (
     <div className="list-container">
       <div className="list-header">
-        <h2>Video List</h2>
-        <input
-          type="text"
-          placeholder="Search videos..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className="search-bar"
-        />
+        <h2>Video Playlist</h2>
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search videos..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="search-bar"
+          />
+          {searchQuery && (
+            <button onClick={clearSearch} className="clear-search-btn">
+              &#x2715;
+            </button>
+          )}
+        </div>
       </div>
-      <ul>
+      <ul className="video-list">
         {filteredVideos.length > 0 ? (
           filteredVideos.map((video) => (
             <li
               key={video.id}
               onClick={() => handleVideoClick(video)}
-              className={`video-item ${selectedVideo && selectedVideo.id === video.id ? 'selected' : ''}`}>
-               <img src={video.thumbnailUrl} alt={video.title} className="video-thumbnail" />
+              className={`video-item ${
+                selectedVideo && selectedVideo.id === video.id ? 'selected' : ''
+              }`}
+            >
+              <img
+                src={video.thumbnailUrl}
+                alt={video.title}
+                className="video-thumbnail"
+              />
               <div className="video-info">
                 <span className="video-title">{video.title}</span>
                 <p className="video-description">{video.description}</p>
